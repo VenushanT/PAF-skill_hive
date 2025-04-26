@@ -5,6 +5,10 @@ import Dashboard from './pages/Dashboard';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import './style.css';
+import QuizzesPage from './pages/QuizzesPage';
+import QuizDetailsPage from './pages/QuizDetailsPage';
+import QuizEditPage from './pages/QuizEditPage';
+import QuestionEditPage from './pages/QuestionEditPage';
 
 function App() {
   return (
@@ -13,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        
         <Route
           path="/dashboard"
           element={
@@ -21,6 +26,11 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/quizzes" element={<QuizzesPage />} />
+        <Route path="/quizzes/:quizId" element={<QuizDetailsPage />} />
+        <Route path="/quizzes/:quizId/edit" element={<QuizEditPage />} />
+        <Route path="/quizzes/:quizId/questions/:questionId/edit" element={<QuestionEditPage />} />
+        
         <Route path="/" element={<Login />} />
       </Routes>
     </BrowserRouter>

@@ -3,7 +3,7 @@ import api from '../services/api';
 import { 
   BookOpen, Calendar, Clock, FileText, Home, 
   LayoutDashboard, Settings, User, Users, 
-  ChevronRight, Award, Bell, Search
+  ChevronRight, Award, Bell, Search, Brain
 } from "lucide-react";
 
 // Sample data (unchanged)
@@ -347,6 +347,13 @@ export default function Dashboard() {
           >
             <BookOpen className="h-5 w-5" />
             My Courses
+          </a>
+          <a
+            href="/quizzes"
+            className="flex items-center gap-3 rounded-lg px-4 py-3 text-gray-500 hover:bg-gray-50 hover:text-gray-900 transition-colors"
+          >
+            <Brain className="h-5 w-5" />
+            SkillShare
           </a>
           <a
             href="/calendar"

@@ -8,7 +8,7 @@ export default function QuestionForm({ onSubmit, initialQuestion = {} }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!text.trim() || !answer.trim()) {
-      setError('Question and answer are required');
+      setError('Both Question and Answer are required');
       return;
     }
     setError('');
@@ -16,43 +16,49 @@ export default function QuestionForm({ onSubmit, initialQuestion = {} }) {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
-      <h2 className="text-xl font-bold mb-4">{initialQuestion.id ? 'Edit Question' : 'Add Question'}</h2>
+    <div className="bg-white rounded-3xl shadow-2xl p-8 mb-10 animate-fadeIn">
+      <h2 className="text-2xl font-extrabold text-center text-gray-800 mb-8">
+        {initialQuestion.id ? '✏️ Edit Question' : '➕ Add New Question'}
+      </h2>
+
       {error && (
-        <div className="bg-red-100 text-red-600 p-3 rounded-lg mb-4">{error}</div>
-      )}
-      <div>
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Question</label>
-            <input
-              type="text"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              className="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Enter question"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Answer</label>
-            <input
-              type="text"
-              value={answer}
-              onChange={(e) => setAnswer(e.target.value)}
-              className="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Enter answer"
-            />
-          </div>
-          <div className="flex justify-end">
-            <button
-              onClick={handleSubmit}
-              className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 font-medium"
-            >
-              {initialQuestion.id ? 'Update Question' : 'Add Question'}
-            </button>
-          </div>
+        <div className="bg-red-100 text-red-700 p-4 rounded-lg mb-6 text-center font-semibold">
+          {error}
         </div>
-      </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div>
+          <label className="block text-md font-semibold text-gray-700 mb-2">Question</label>
+          <input
+            type="text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            placeholder="Enter your question here..."
+          />
+        </div>
+
+        <div>
+          <label className="block text-md font-semibold text-gray-700 mb-2">Answer</label>
+          <input
+            type="text"
+            value={answer}
+            onChange={(e) => setAnswer(e.target.value)}
+            className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            placeholder="Enter the correct answer..."
+          />
+        </div>
+
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className="w-full md:w-auto px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl transition duration-300 shadow-md"
+          >
+            {initialQuestion.id ? 'Update' : 'Add'}
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import api from '../services/api';
 import QuestionForm from './QuestionForm';
 
@@ -13,9 +13,6 @@ export default function QuestionEditPage() {
   useEffect(() => {
     const fetchQuestion = async () => {
       try {
-        // Note: The backend doesn't have a direct endpoint to get a question by ID,
-        // so we fetch all questions for the quiz and find the one we need.
-        // Ideally, the backend should have a GET /api/questions/{id} endpoint.
         const response = await api.get(`/api/questions/quiz/${quizId}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
@@ -46,10 +43,10 @@ export default function QuestionEditPage() {
 
   if (loading) {
     return (
-      <div className="flex h-screen items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <div className="animate-spin h-12 w-12 border-4 border-blue-600 border-t-transparent rounded-full mx-auto mb-6"></div>
-          <p className="text-lg font-medium text-gray-600">Loading question...</p>
+      <div className="flex h-screen items-center justify-center bg-gradient-to-br from-blue-50 to-purple-100">
+        <div className="text-center animate-fadeIn">
+          <div className="animate-spin h-16 w-16 border-4 border-purple-600 border-t-transparent rounded-full mx-auto mb-6"></div>
+          <p className="text-lg font-semibold text-gray-700">Loading question...</p>
         </div>
       </div>
     );
@@ -57,13 +54,13 @@ export default function QuestionEditPage() {
 
   if (error) {
     return (
-      <div className="flex h-screen items-center justify-center bg-gray-50">
-        <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6">
+      <div className="flex h-screen items-center justify-center bg-gradient-to-br from-red-50 to-pink-100">
+        <div className="bg-white rounded-xl shadow-xl max-w-md w-full p-8 animate-fadeIn">
           <div className="text-center mb-6">
-            <div className="inline-flex rounded-full bg-red-100 p-4">
+            <div className="inline-flex rounded-full bg-red-100 p-5 shadow-md">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8 text-red-500"
+                className="h-10 w-10 text-red-500"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -76,13 +73,13 @@ export default function QuestionEditPage() {
                 />
               </svg>
             </div>
-            <h2 className="mt-4 text-xl font-bold text-gray-800">Error</h2>
+            <h2 className="mt-4 text-2xl font-bold text-gray-800">Something went wrong</h2>
             <p className="mt-2 text-gray-600">{error}</p>
           </div>
           <div className="text-center">
             <Link
               to={`/quizzes/${quizId}`}
-              className="inline-block px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+              className="inline-block px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-all shadow-md"
             >
               Back to Quiz
             </Link>
@@ -95,10 +92,12 @@ export default function QuestionEditPage() {
   if (!question) return null;
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <main className="max-w-7xl mx-auto px-4 py-6">
-        <h1 className="text-3xl font-bold text-gray-800 mb-6">Edit Question</h1>
-        <QuestionForm initialQuestion={question} onSubmit={handleUpdateQuestion} />
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-200 animate-fadeIn">
+      <main className="max-w-4xl mx-auto px-6 py-10">
+        <div className="bg-white rounded-2xl shadow-2xl p-10">
+          <h1 className="text-4xl font-extrabold text-gray-800 mb-8 text-center">Edit Question</h1>
+          <QuestionForm initialQuestion={question} onSubmit={handleUpdateQuestion} />
+        </div>
       </main>
     </div>
   );

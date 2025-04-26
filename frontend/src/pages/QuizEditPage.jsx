@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { ChevronRight } from 'lucide-react';
 import api from '../services/api';
 import QuizForm from './QuizForm';
 
@@ -92,8 +93,20 @@ export default function QuizEditPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <main className="max-w-7xl mx-auto px-4 py-6">
-        <h1 className="text-3xl font-bold text-gray-800 mb-6">Edit Quiz</h1>
-        <QuizForm initialQuiz={quiz} onSubmit={handleUpdateQuiz} />
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-3xl font-bold text-gray-800">Edit Quiz</h1>
+          <Link
+            to={`/quizzes/${quiz.id}`}
+            className="flex items-center gap-1 text-blue-600 font-medium hover:text-blue-800"
+          >
+            <ChevronRight className="h-4 w-4" />
+            Back to Quiz Details
+          </Link>
+        </div>
+        
+        <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+          <QuizForm initialQuiz={quiz} onSubmit={handleUpdateQuiz} />
+        </div>
       </main>
     </div>
   );

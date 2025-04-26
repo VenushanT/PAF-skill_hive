@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation"
 import { loginRequest, setTokens } from "@/lib/api"
 import Image from "next/image"
 
+//Update
+
 export default function LoginPage() {
     const router = useRouter()
     const [username, setUsername] = useState("")
@@ -15,6 +17,7 @@ export default function LoginPage() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         setError("")
+
 
         try {
             const data = await loginRequest({ username, password })

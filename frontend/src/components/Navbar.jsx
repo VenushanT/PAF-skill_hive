@@ -51,10 +51,10 @@ function Navbar() {
             to="/" 
             className="flex items-center space-x-2"
           >
-            <div className="h-8 w-8 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center">
-              <span className="text-white font-bold text-lg">A</span>
+            <div className="h-8 w-8 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center hover:animate-pulse">
+              <span className="text-white font-bold text-lg">^</span>
             </div>
-            <span className="font-bold text-xl bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">App</span>
+            <span className="font-bold text-xl bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">SKILL HIVE</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -63,7 +63,7 @@ function Navbar() {
               <>
                 <Link 
                   to="/login" 
-                  className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-lg transition-colors font-medium"
+                  className="text-gray-700 hover:text-blue-600 hover:scale-105 transform transition-all duration-200 px-3 py-2 rounded-lg font-medium"
                 >
                   Login
                 </Link>
@@ -80,7 +80,7 @@ function Navbar() {
                   to="/" 
                   className={`flex items-center space-x-1 px-3 py-2 rounded-lg transition-colors font-medium ${
                     location.pathname === '/' 
-                      ? 'text-blue-600 bg-blue-50' 
+                      ? 'text-blue-600 bg-blue-50 after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-blue-600'
                       : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
                   }`}
                 >
@@ -91,7 +91,7 @@ function Navbar() {
                   to="/dashboard" 
                   className={`flex items-center space-x-1 px-3 py-2 rounded-lg transition-colors font-medium ${
                     location.pathname === '/dashboard' 
-                      ? 'text-blue-600 bg-blue-50' 
+                      ? 'text-blue-600 bg-blue-50 after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-blue-600'
                       : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
                   }`}
                 >
@@ -112,7 +112,7 @@ function Navbar() {
                   </button>
                   
                   {profileDropdownOpen && (
-                    <div className="absolute right-0 mt-2 w-48 py-2 bg-white rounded-lg shadow-xl border border-gray-100">
+                    <div className="absolute right-0 mt-2 w-48 py-2 bg-white rounded-lg shadow-xl border border-gray-100 transition-all duration-300">
                       <div className="px-4 py-2 border-b border-gray-100">
                         <p className="text-sm font-medium text-gray-900">User Account</p>
                         <p className="text-xs text-gray-500 truncate">user@example.com</p>
@@ -156,7 +156,7 @@ function Navbar() {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden shadow-lg">
+        <div className="md:hidden shadow-lg animate-slideDown">
           <div className="px-2 pt-2 pb-4 space-y-1 bg-white">
             {!token ? (
               <>

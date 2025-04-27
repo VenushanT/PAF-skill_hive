@@ -12,7 +12,9 @@ interface Course {
     title: string
     description: string
     instructorId: number
-    instructorUsername: string;
+    instructorUsername: string
+
+
 }
 
 export default function CoursesPage() {
@@ -26,6 +28,7 @@ export default function CoursesPage() {
             const data = await authFetch("/courses", { method: "GET" })
             setCourses
         } catch (err: any) {
+            setError(err.message || "Failed to fetch courses")
             setError(err.message || "Failed to fetch courses")
         }
     }

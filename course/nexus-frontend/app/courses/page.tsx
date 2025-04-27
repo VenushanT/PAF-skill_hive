@@ -12,7 +12,7 @@ interface Course {
     title: string
     description: string
     instructorId: number
-    instructorUsername: string
+    instructorUsername: string;
 }
 
 export default function CoursesPage() {

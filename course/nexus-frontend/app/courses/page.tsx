@@ -44,6 +44,7 @@ export default function CoursesPage() {
                 setUsername(username) // Assuming the response includes the 'username' field
             } catch (err: any) {
                 setError('Failed to fetch user profile')
+                setError('Failed to fetch user profile')
                 console.error(err)
             }
         }

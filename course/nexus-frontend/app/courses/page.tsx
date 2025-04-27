@@ -135,6 +135,7 @@ export default function CoursesPage() {
                                         >
                                             <Trash2 size={16} />
                                             <span>Delete</span>
+                                            <span/>
                                         </button>
                                     </div>
                                 </div>

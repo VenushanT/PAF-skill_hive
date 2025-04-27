@@ -12,6 +12,9 @@ export default function UserProfile({ username }: UserProfileProps) {
                 {initial}
             </div>
             <span className="text-gray-700 font-medium">{username}</span>
+            <span className="text-gray-700 font-medium">{username}</span>
+            <span className="text-gray-700 font-medium">{username}</span>
+            <span className="text-gray-700 font-medium">{username}</span>
         </div>
     )
 }

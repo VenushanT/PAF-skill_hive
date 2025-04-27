@@ -17,7 +17,7 @@ export default function LoginPage() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         setError("")
-
+////
 
         try {
             const data = await loginRequest({ username, password })
@@ -76,7 +76,7 @@ export default function LoginPage() {
                             className="text-cyan-500 text-sm hover:underline"
                             onClick={() => alert("Password reset functionality")}
                         >
-                            Forgot Password
+                            Forgot Password..
                         </button>
                     </div>
 

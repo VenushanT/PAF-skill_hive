@@ -24,7 +24,7 @@ export default function CoursesPage() {
     const fetchCourses = async () => {
         try {
             const data = await authFetch("/courses", { method: "GET" })
-            setCourses(data)
+            setCourses
         } catch (err: any) {
             setError(err.message || "Failed to fetch courses")
         }
@@ -38,7 +38,7 @@ export default function CoursesPage() {
         const fetchUserProfile = async () => {
             try {
                 const user = await authFetch('/auth/me', { method: 'GET' }) // Fetch user data using authFetch
-                setUsername(user.username) // Assuming the response includes the 'username' field
+                setUsername(username) // Assuming the response includes the 'username' field
             } catch (err: any) {
                 setError('Failed to fetch user profile')
                 console.error(err)

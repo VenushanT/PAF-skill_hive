@@ -1,4 +1,4 @@
-package com.example.demo.model;
+ backend/src/main/java/com/example/demo/repository/NotificationRepository.javapackage com.example.demo.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
